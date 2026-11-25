@@ -1,0 +1,802 @@
+/* CONFIGURAÇÕES GERAIS */
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.azul{
+  color: darkblue;
+}
+
+.gradi-azul{
+  background: linear-gradient(to bottom, rgb(59, 59, 196), darkblue);
+}
+
+#fundo-azul{
+  background-color: rgb(192, 237, 255);
+}
+
+.rosa{
+  color: rgb(192, 10, 146)
+}
+
+.gradi-rosa{
+  background: linear-gradient(to bottom, rgb(231, 36, 199) , rgb(192, 10, 146));
+}
+
+#fundo-rosa{
+  background-color: rgb(254, 192, 255);
+}
+
+.laranja{
+  color: rgb(213, 75, 0);
+}
+
+.gradi-laranja{
+  background: linear-gradient(to bottom, orange, rgb(213, 131, 0));
+}
+
+#fundo-laranja{
+  background-color: rgb(255, 231, 192);
+}
+
+.verde{
+  color: darkgreen;
+}
+
+.gradi-verde{
+  background: linear-gradient(to bottom, rgb(68, 196, 59), darkgreen);
+}
+
+#fundo-verde{
+  background-color: rgb(192, 255, 209);
+}
+
+
+body {
+  margin: 0;
+  padding: 20px;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+/* CARD E VIDA DO ROBÔ */
+
+#topo {
+  width: 100%;
+  max-width: 650px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  gap: 50px;
+
+  margin: 15px auto 5px;
+}
+
+/* CARD DE CONEXÃO */
+
+.card {
+
+  margin: 0;
+  margin: 20px;
+
+  display: grid;
+  justify-items: center;
+  align-content: center;
+
+  text-align: center;
+}
+
+.card p{
+  font-size: 14px;
+  font-weight: bolder;
+  padding: 0px;
+  margin: 0px 0px 8px 0px;
+}
+
+#botao {
+  padding: 8px 30px;
+
+  background-color: white;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#botao:hover {
+  background-color: rgb(218, 218, 218);
+}
+
+#botao:active {
+  background-color: rgb(168, 168, 168);
+}
+
+#botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input {
+  visibility: hidden;
+}
+
+#connectionStatus {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+/* VIDA DO ROBÔ */
+
+#statusRobo {
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.barra-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.barra-container label {
+  font-size: 13px;
+  text-align: center;
+}
+
+/* QUADRADOS DE VIDA */
+
+#vidas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.vida-quadrado {
+  width: 80px;
+  height: 25px;
+
+  background-color: #22c55e;
+
+  border: 2px solid #166534;
+  border-radius: 4px;
+
+  transition: background-color 0.3s ease;
+}
+
+/* VIDA CHEIA */
+
+#vidas.vida-cheia .vida-quadrado {
+  background-color: #22c55e;
+  border-color: #166534;
+}
+
+/* DUAS VIDAS */
+
+#vidas.vida-media .vida-quadrado {
+  background-color: #eab308;
+  border-color: #a16207;
+}
+
+/* UMA VIDA */
+
+#vidas.vida-critica .vida-quadrado {
+  background-color: #ef4444;
+  border-color: #991b1b;
+}
+
+/* VIDAS PERDIDAS */
+
+.vida-quadrado.perdida {
+  visibility: hidden;
+}
+
+/* CONTROLES DO ROBÔ */
+
+#controles {
+  width: 100%;
+  max-width: 650px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+
+  margin: 35px auto 25px;
+
+  gap: 15px;
+}
+
+/* SETAS VERTICAIS */
+
+.grupo-vertical {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 25px;
+}
+
+/* SETAS HORIZONTAIS */
+
+.grupo-horizontal {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+/* BOTÕES DAS SETAS */
+
+.controle {
+  width: 130px;
+  height: 130px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  touch-action: none;
+}
+
+.controle img {
+  width: 100px;
+  height: 100px;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
+
+/* ROTAÇÃO DAS SETAS */
+
+#cima img {
+  transform: rotate(-90deg);
+}
+
+#baixo img {
+  transform: rotate(90deg);
+}
+
+#esquerda img {
+  transform: rotate(180deg);
+}
+
+#direita img {
+  transform: rotate(0deg);
+}
+
+/* EFEITO DAS SETAS */
+
+.controle.ativo img {
+  opacity: 0.6;
+}
+
+#cima.ativo img {
+  transform: rotate(-90deg) scale(0.9);
+}
+
+#baixo.ativo img {
+  transform: rotate(90deg) scale(0.9);
+}
+
+#esquerda.ativo img {
+  transform: rotate(180deg) scale(0.9);
+}
+
+#direita.ativo img {
+  transform: rotate(0deg) scale(0.9);
+}
+
+/* BOTÃO DASH */
+
+.grupo-dash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+#botaoDash {
+  width: 85px;
+  height: 85px;
+
+  color: white;
+
+  border: 5px solid rgb(0, 0, 0);
+  border-radius: 50%;
+
+  font-size: 10px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+
+  box-shadow: 0px 0px 5px black;
+}
+
+#botaoDash:hover:not(:disabled) {
+  background-color: rgb(168, 166, 202);
+}
+
+#botaoDash:active:not(:disabled) {
+  transform: scale(0.93);
+}
+
+#botaoDash:disabled {
+  background-color: #999999;
+  border-color: #555555;
+
+  cursor: not-allowed;
+
+  opacity: 0.7;
+}
+
+/* BARRA DE STAMINA */
+
+#staminaContainer {
+  width: 400px;
+  max-width: 85%;
+
+  margin: 15px auto 20px;
+}
+
+.barra {
+  position: relative;
+
+  width: 100%;
+  height: 25px;
+
+  background-color: #918fa3;
+
+  border: 2px solid #b5b9be;
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.barra-preenchimento {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 100%;
+
+  border-radius: 10px;
+}
+
+.stamina {
+  background-color: #9e9cc7;
+}
+
+.stamina-dash {
+  display: flex;
+  align-items: center;
+}
+
+/* CONTADOR DA STAMINA */
+
+#staminaTimer {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 2;
+
+  color: black;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+/* GAME OVER */
+
+#gameOverOverlay {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.65);
+
+  z-index: 9999;
+}
+
+#gameOverBox {
+  width: 280px;
+  height: 180px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #1f2937;
+
+  border: 4px solid #ef4444;
+  border-radius: 12px;
+
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+#gameOverBox h1 {
+  color: #ef4444;
+
+  font-size: 30px;
+  text-align: center;
+}
+
+/* -- RESPONSIVIDADE -- */
+
+/* Celulares maiores e tablets */
+@media screen and (orientation: landscape) and (min-height: 501px) {
+  #topo {
+    width: 100%;
+    max-width: 1050px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    gap: 40px;
+
+    margin: 1px auto 1px;
+  }
+
+  .card {
+    margin: 0;
+    margin: 10px;
+
+    display: grid;
+    justify-items: center;
+    align-content: center;
+
+    text-align: center;
+  }
+
+  #botao {
+    padding: 8px 30px;
+
+    height: 35px;
+
+    background-color: white;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  /* QUADRADOS DE VIDA */
+  #vidas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  .vida-quadrado {
+    width: 60px;
+    height: 20px;
+
+    background-color: #22c55e;
+
+    border: 2px solid #166534;
+    border-radius: 4px;
+
+    transition: background-color 0.3s ease;
+  }
+
+  /* BOTÃO DASH */
+  .grupo-dash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  #botaoDash {
+    width: 125px;
+    height: 125px;
+
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 10px;
+  }
+
+  #controles {
+    margin: auto;
+    gap: 25px;
+    justify-content: space-between;
+  }
+
+  .controle {
+    width: 130px;
+    height: 120px;
+  }
+
+  .controle img {
+    width: 110px;
+    height: 110px;
+  }
+
+  #botaoDash {
+    width: 90px;
+    height: 90px;
+
+    margin-top: 15px;
+  }
+
+  #staminaContainer {
+    width: 280px;
+  }
+}
+
+/* Celulares com altura intermediária */
+@media screen and (orientation: landscape) and (min-height: 401px) and (max-height: 500px) {
+  #topo {
+    width: 100%;
+    max-width: 1050px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    gap: 30px;
+
+    margin: 1px auto 1px;
+  }
+
+  .card {
+    margin: 0;
+    margin: 10px;
+
+    display: grid;
+    justify-items: center;
+    align-content: center;
+
+    text-align: center;
+  }
+
+  #botao {
+    padding: 8px 30px;
+
+    height: 35px;
+
+    background-color: white;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  /* QUADRADOS DE VIDA */
+  #vidas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  .vida-quadrado {
+    width: 60px;
+    height: 20px;
+
+    background-color: #22c55e;
+
+    border: 2px solid #166534;
+    border-radius: 4px;
+
+    transition: background-color 0.3s ease;
+  }
+
+  /* BOTÃO DASH */
+  .grupo-dash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  #botaoDash {
+    width: 125px;
+    height: 125px;
+
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 10px;
+  }
+
+  #controles {
+    margin: auto;
+    gap: 19px;
+    justify-content: space-between;
+  }
+
+  .controle {
+    width: 120px;
+    height: 95px;
+  }
+
+  .controle img {
+    width: 90px;
+    height: 90px;
+  }
+
+  #botaoDash {
+    width: 70px;
+    height: 70px;
+
+    margin-top: 15px;
+  }
+
+  #staminaContainer {
+    width: 250px;
+  }
+}
+
+/* Celulares com pouca altura */
+@media screen and (orientation: landscape) and (max-height: 400px) {
+  #topo {
+    width: 100%;
+    max-height: 100px;
+    max-width: 1050px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    gap: 30px;
+
+    margin: 1px auto 1px;
+  }
+
+  .card {
+    margin: 0;
+    margin: 10px;
+
+    display: grid;
+    justify-items: center;
+    align-content: center;
+
+    text-align: center;
+  }
+
+  #botao {
+    padding: 8px 30px;
+
+    height: 30px;
+
+    background-color: white;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+
+    cursor: pointer;
+    font-size: 10px;
+  }
+
+  /* QUADRADOS DE VIDA */
+  #vidas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  .vida-quadrado {
+    width: 60px;
+    height: 20px;
+
+    background-color: #22c55e;
+
+    border: 2px solid #166534;
+    border-radius: 4px;
+
+    transition: background-color 0.3s ease;
+  }
+
+  /* BOTÃO DASH */
+  .grupo-dash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  #botaoDash {
+    width: 85px;
+    height: 85px;
+
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 10px;
+  }
+
+  #controles {
+    margin: auto;
+    gap: 19px;
+    justify-content: space-between;
+  }
+
+  .controle {
+    width: 95px;
+    height: 80px;
+  }
+
+  .controle img {
+    width: 80px;
+    height: 80px;
+  }
+
+  #botaoDash {
+    width: 70px;
+    height: 70px;
+
+    margin-top: 15px;
+  }
+
+  #staminaContainer {
+    width: 250px;
+  }
+}

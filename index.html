@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Luta de Robôs</title>
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="img/robô.ico" type="image/x-icon">
+</head>
+
+<body id="fundo-azul" class="azul">
+
+    <!-- CARD E VIDA DO ROBÔ -->
+    <div id="topo" >
+
+        <!-- CARD DE CONEXÃO -->
+        <div class="card">
+
+            <strong>
+                <p>ROBÔ AZUL</p>
+            </strong>
+            
+            <button id="botao" oncli
+            ck="connect()">Conectar Robô</button>
+            
+            <p id="connectionStatus">Desconectado</p>
+
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="wsUrl"
+                    value="ws://192.168.4.1"
+                    placeholder="ws://YOUR_ESP32_IP"
+                >
+            </div>
+
+
+        </div>
+
+        <!-- VIDA DO ROBÔ -->
+        <div id="statusRobo">
+
+            <div class="barra-container">
+
+                <label>VIDA</label>
+
+                <div id="vidas">
+                    <div class="vida-quadrado"></div>
+                    <div class="vida-quadrado"></div>
+                    <div class="vida-quadrado"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTROLES DO ROBÔ -->
+    <div id="controles">
+
+        <!-- SETAS VERTICAIS -->
+        <div class="grupo-vertical">
+
+            <button class="controle" id="cima" data-direcao="N">
+                <img src="img/seta-azul.png" alt="Cima">
+            </button>
+
+            <button class="controle" id="baixo" data-direcao="S">
+                <img src="img/seta-azul.png" alt="Baixo">
+            </button>
+
+        </div>
+
+
+        <div class="setas-e-dash">
+
+            <!-- SETAS HORIZONTAIS -->
+            <div class="grupo-horizontal">
+                
+                <button class="controle" id="esquerda" data-direcao="W">
+                    <img src="img/seta-azul.png" alt="Esquerda">
+                </button>
+                
+                <button class="controle" id="direita" data-direcao="E">
+                    <img src="img/seta-azul.png" alt="Direita">
+                </button>
+                
+            </div>
+
+            <!-- DASH -->
+            <div class="grupo-dash">
+                
+                <button id="botaoDash" class="gradi-azul" onclick="usarDash()">
+                    DASH
+                </button>
+                
+            </div> 
+            
+        </div>
+
+    </div>
+
+    <!-- BARRA DE STAMINA -->
+         <div id="staminaContainer">
+             
+             <div class="barra">
+                 
+                 <div id="stamina" class="barra-preenchimento stamina"></div>
+                 
+                 <span id="staminaTimer">STAMINA CHEIA</span>
+                 
+                </div>
+                
+            </div>
+
+    <!-- GAME OVER -->
+    <div id="gameOverOverlay" aria-hidden="true">
+
+        <div id="gameOverBox">
+            <h1>GAME OVER</h1>
+        </div>
+
+    </div>
+
+    <script src="script/joystick_controls.js"></script>
+
+</body>
+</html>
